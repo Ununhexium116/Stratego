@@ -36,11 +36,23 @@ public class GUI implements ActionListener{
 
         for(int i = 0; i<10; i++){
             for(int j=0; j<10; j++){
-                boardLabels[i][j] = new JLabel();
-                boardLabels[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                gameScreen.add(boardLabels[i][j]);
+                boardLabels[j][i] = new JLabel();
+                boardLabels[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                boardLabels[j][i].setOpaque(true);
+                gameScreen.add(boardLabels[j][i]);
             }
         }
+
+        // Create "Pits" on board
+        boardLabels[2][4].setBackground(Color.BLACK);
+        boardLabels[2][5].setBackground(Color.BLACK);
+        boardLabels[3][4].setBackground(Color.BLACK);
+        boardLabels[3][5].setBackground(Color.BLACK);
+
+        boardLabels[6][4].setBackground(Color.BLACK);
+        boardLabels[6][5].setBackground(Color.BLACK);
+        boardLabels[7][4].setBackground(Color.BLACK);
+        boardLabels[7][5].setBackground(Color.BLACK);
 
         cl.show(contPanel,"start");
     }
@@ -59,6 +71,7 @@ public class GUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
             cl.show(contPanel, "game");
+            gameScreen.updateUI();
         }
     }
 }
