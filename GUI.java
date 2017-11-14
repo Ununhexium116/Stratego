@@ -7,7 +7,7 @@ public class GUI implements ActionListener{
     JFrame window = new JFrame("Jared mad bad");
     CardLayout cl = new CardLayout();
     JPanel startScreen = new JPanel(new GridLayout(2,1));
-    JPanel gameScreen = new JPanel();
+    JPanel gameScreen = new JPanel(new GridLayout(10,10));
     JPanel contPanel = new JPanel(cl);
 
     JLabel title = new JLabel();
