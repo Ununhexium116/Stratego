@@ -15,6 +15,8 @@ public class GUI implements ActionListener{
 
     ImageIcon titleImage = new ImageIcon("src/src/stratego.png");
 
+    JLabel [][] boardLabels = new JLabel[10][10];
+
     public GUI(){
         Font();
         window.add(contPanel);
@@ -31,6 +33,14 @@ public class GUI implements ActionListener{
         startScreen.add(startButton, BorderLayout.SOUTH);
 
         gameScreen.setPreferredSize(new Dimension(1000,1000));
+
+        for(int i = 0; i<10; i++){
+            for(int j=0; j<10; j++){
+                boardLabels[i][j] = new JLabel();
+                boardLabels[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                gameScreen.add(boardLabels[i][j]);
+            }
+        }
 
         cl.show(contPanel,"start");
     }
