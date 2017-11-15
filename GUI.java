@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 import javax.swing.*;
 
 public class GUI implements ActionListener{
@@ -13,9 +14,11 @@ public class GUI implements ActionListener{
     JLabel title = new JLabel();
     JButton startButton = new JButton("Start");
 
-    ImageIcon titleImage = new ImageIcon("src/src/stratego.png");
+    ImageIcon titleImage = new ImageIcon("src/stratego.png");
 
     JLabel [][] boardLabels = new JLabel[10][10];
+
+    Piece [][] boardPieceArray = new Piece[10][10];
 
     public GUI(){
         Font();
@@ -56,6 +59,13 @@ public class GUI implements ActionListener{
 
         cl.show(contPanel,"start");
     }
+
+    public void createPieces() {
+        for (int i = 0; i < 40; i++) {
+
+        }
+    }
+
     public void Font(){
         title.setForeground(Color.RED);
         title.setFont(new Font("Helvetica", Font.PLAIN, 36));
@@ -67,6 +77,11 @@ public class GUI implements ActionListener{
         startButton.setBackground(Color.GRAY);
     }
 
+    private int randomInt(int min, int max) {
+        Random r = new Random();
+        return r.nextInt(max - min + 1) + min;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
@@ -74,4 +89,6 @@ public class GUI implements ActionListener{
             gameScreen.updateUI();
         }
     }
+
+
 }
