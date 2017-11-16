@@ -47,23 +47,23 @@ public class GUI implements ActionListener{
         }
 
         // Create "Pits" on board
-        /*boardLabels[2][4].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(2, 4, false, 15);
+        boardLabels[2][4].setBackground(Color.BLACK);
+        boardHoleArray[2][4] = new Hole(2, 4,  15);
         boardLabels[2][5].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(2, 5, false, 15);
+        boardHoleArray[2][4] = new Hole(2, 5, 15);
         boardLabels[3][4].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(3, 4, false, 15);
+        boardHoleArray[2][4] = new Hole(3, 4, 15);
         boardLabels[3][5].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(3, 5, false, 15);
+        boardHoleArray[2][4] = new Hole(3, 5, 15);
 
         boardLabels[6][4].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(6, 4, false, 15);
+        boardHoleArray[2][4] = new Hole(6, 4, 15);
         boardLabels[6][5].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(6, 5, false, 15);
+        boardHoleArray[2][4] = new Hole(6, 5, 15);
         boardLabels[7][4].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(7, 4, false, 15);
+        boardHoleArray[2][4] = new Hole(7, 4, 15);
         boardLabels[7][5].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(7, 5, false, 15);*/
+        boardHoleArray[2][4] = new Hole(7, 5, 15);
 
         cl.show(contPanel,"start");
     }
