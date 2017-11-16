@@ -1,13 +1,13 @@
 public class Piece {
     private int x = 0;
     private int y = 0;
-    private boolean player;
+    int strength;
 
     // Default Constructor
-    public Piece(int X, int Y, boolean playerPiece) {
+    public Piece(int X, int Y, int strength) {
         this.x = X;
         this.y = Y;
-        this.player = playerPiece;
+        this.strength = strength;
     }
 
     // Setters
@@ -19,8 +19,8 @@ public class Piece {
         this.y = Y;
     }
 
-    public void setPlayer(boolean inputPlayer) {
-        this.player = inputPlayer;
+    public void setStrength(int inputPlayer) {
+        this.strength = inputPlayer;
     }
 
     // Getters
@@ -32,7 +32,7 @@ public class Piece {
         return this.y;
     }
 
-    public boolean getPlayer() {
-        return this.player;
+    public int getStrength() {
+        return this.strength;
     }
 }
