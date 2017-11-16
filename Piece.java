@@ -5,7 +5,7 @@ public class Piece {
     private boolean player;
 
     // Default Constructor
-    public void piece(int X, int Y, boolean playerPiece, int Strength) {
+    public Piece(int X, int Y, boolean playerPiece, int Strength) {
         this.x = X;
         this.y = Y;
         this.player = playerPiece;
