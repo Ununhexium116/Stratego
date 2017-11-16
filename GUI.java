@@ -66,10 +66,7 @@ public class GUI implements ActionListener{
         boardPieceArray[2][4] = new Piece(7, 5, false, 15);
 
         cl.show(contPanel,"start");
-    }
 
-    public void createPiece(int x, int y, boolean  playerPiece,int Strength) {
-        boardPieceArray[x][y] = new Piece(x, y, false, 11);
     }
 
     public void Font(){
