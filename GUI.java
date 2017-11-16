@@ -47,7 +47,7 @@ public class GUI implements ActionListener{
         }
 
         // Create "Pits" on board
-        boardLabels[2][4].setBackground(Color.BLACK);
+        /*boardLabels[2][4].setBackground(Color.BLACK);
         boardPieceArray[2][4] = new Piece(2, 4, false, 15);
         boardLabels[2][5].setBackground(Color.BLACK);
         boardPieceArray[2][4] = new Piece(2, 5, false, 15);
@@ -63,10 +63,9 @@ public class GUI implements ActionListener{
         boardLabels[7][4].setBackground(Color.BLACK);
         boardPieceArray[2][4] = new Piece(7, 4, false, 15);
         boardLabels[7][5].setBackground(Color.BLACK);
-        boardPieceArray[2][4] = new Piece(7, 5, false, 15);
+        boardPieceArray[2][4] = new Piece(7, 5, false, 15);*/
 
         cl.show(contPanel,"start");
-
     }
 
     public void Font(){
