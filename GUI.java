@@ -18,7 +18,9 @@ public class GUI implements ActionListener{
 
     JLabel [][] boardLabels = new JLabel[10][10];
 
-    Piece [][] boardPieceArray = new Piece[10][10];
+    Hole [] holeArray = new Hole[8];
+    playerPiece [] playerPieceArray = new playerPiece[40];
+    enemyPiece [] enemyPieceArray = new enemyPiece[40];
 
     public GUI(){
         Font();
@@ -47,23 +49,23 @@ public class GUI implements ActionListener{
         }
 
         // Create "Pits" on board
-        /*boardLabels[2][4].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(2, 4,  15);
+        boardLabels[2][4].setBackground(Color.BLACK);
+        holeArray[0] = new Hole(2, 4, 15);
         boardLabels[2][5].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(2, 5, 15);
+        holeArray[0] = new Hole(2, 5, 15);
         boardLabels[3][4].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(3, 4, 15);
+        holeArray[0] = new Hole(3, 4, 15);
         boardLabels[3][5].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(3, 5, 15);
+        holeArray[0] = new Hole(3, 5, 15);
 
         boardLabels[6][4].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(6, 4, 15);
+        holeArray[0] = new Hole(6, 4, 15);
         boardLabels[6][5].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(6, 5, 15);
+        holeArray[0] = new Hole(6, 5, 15);
         boardLabels[7][4].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(7, 4, 15);
+        holeArray[0] = new Hole(7, 4, 15);
         boardLabels[7][5].setBackground(Color.BLACK);
-        boardHoleArray[2][4] = new Hole(7, 5, 15);*/
+        holeArray[0] = new Hole(7, 5, 15);
 
         cl.show(contPanel,"start");
     }
