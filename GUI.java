@@ -68,6 +68,62 @@ public class GUI implements ActionListener{
         holeArray[0] = new Hole(7, 5, 15);
 
         cl.show(contPanel,"start");
+
+        // Add player and enemy pieces
+        // Spies
+        playerPieceArray[0] = new playerPiece(randomInt(0, 10), randomInt(6 ,10), 1);
+        enemyPieceArray[0] = new enemyPiece(randomInt(0, 10), randomInt(0, 4), 1);
+
+        // Scout
+        for (int i = 0; i < 8; i++) {
+            placePlayerPiece(i+1, 2);
+            placeEnemyPiece(i+1, 2);
+        }
+
+    }
+    
+    private void placePlayerPiece(int arrayLocation, int strength) {
+        boolean canPlace = true;
+        int X = randomInt(0, 10);
+        int Y = randomInt(6, 10);
+        // Check to see if another piece exists at the current position
+        for (int i = 0; i < playerPieceArray.length; i++) {
+            if (playerPieceArray[i] != null) {
+                if (X == playerPieceArray[i].getX()) {
+                    canPlace = false;
+                }
+                if (Y == playerPieceArray[i].getY()) {
+                    canPlace = false;
+                }
+            }
+        }
+        if (canPlace) {
+            playerPieceArray[arrayLocation] = new playerPiece(X, Y, strength);
+        } else {
+            placePlayerPiece(arrayLocation, strength);
+        }
+    }
+
+    private void placeEnemyPiece(int arrayLocation, int strength) {
+        boolean canPlace = true;
+        int X = randomInt(0, 10);
+        int Y = randomInt(6, 10);
+        // Check to see if another piece exists at the current position
+        for (int i = 0; i < enemyPieceArray.length; i++) {
+            if (enemyPieceArray[i] != null) {
+                if (X == enemyPieceArray[i].getX()) {
+                    canPlace = false;
+                }
+                if (Y == enemyPieceArray[i].getY()) {
+                    canPlace = false;
+                }
+            }
+        }
+        if (canPlace) {
+            enemyPieceArray[arrayLocation] = new enemyPiece(X, Y, strength);
+        } else {
+            placeEnemyPiece(arrayLocation, strength);
+        }
     }
 
     public void Font(){
