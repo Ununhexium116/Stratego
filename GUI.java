@@ -5,22 +5,22 @@ import javax.swing.*;
 
 public class GUI implements ActionListener{
 
-    JFrame window = new JFrame("Jared mad bad");
-    CardLayout cl = new CardLayout();
-    JPanel startScreen = new JPanel(new GridLayout(2,1));
-    JPanel gameScreen = new JPanel(new GridLayout(10,10));
-    JPanel contPanel = new JPanel(cl);
+    private JFrame window = new JFrame("Jared mad bad");
+    private CardLayout cl = new CardLayout();
+    private JPanel startScreen = new JPanel(new GridLayout(2,1));
+    private JPanel gameScreen = new JPanel(new GridLayout(10,10));
+    private JPanel contPanel = new JPanel(cl);
 
-    JLabel title = new JLabel();
-    JButton startButton = new JButton("Start");
+    private JLabel title = new JLabel();
+    private JButton startButton = new JButton("Start");
 
-    ImageIcon titleImage = new ImageIcon("src/stratego.png");
+    private ImageIcon titleImage = new ImageIcon("src/stratego.png");
 
-    JLabel [][] boardLabels = new JLabel[10][10];
+    private JLabel [][] boardLabels = new JLabel[10][10];
 
-    Hole [] holeArray = new Hole[8];
-    playerPiece [] playerPieceArray = new playerPiece[40];
-    enemyPiece [] enemyPieceArray = new enemyPiece[40];
+    private Hole [] holeArray = new Hole[8];
+    private playerPiece [] playerPieceArray = new playerPiece[40];
+    private enemyPiece [] enemyPieceArray = new enemyPiece[40];
 
     public GUI(){
         Font();
@@ -71,15 +71,67 @@ public class GUI implements ActionListener{
 
         // Add player and enemy pieces
         // Spies
-        playerPieceArray[0] = new playerPiece(randomInt(0, 10), randomInt(6 ,10), 1);
-        enemyPieceArray[0] = new enemyPiece(randomInt(0, 10), randomInt(0, 4), 1);
+        placePlayerPiece(0, 1);
+        placeEnemyPiece(0, 1);
 
-        // Scout
+        // Scouts
         for (int i = 0; i < 8; i++) {
             placePlayerPiece(i+1, 2);
             placeEnemyPiece(i+1, 2);
         }
 
+        // Miners
+        for (int i = 0; i < 5; i++) {
+            placePlayerPiece(i+9, 3);
+            placeEnemyPiece(i+9, 3);
+        }
+
+        // Archers
+        for (int i = 0; i < 4; i++) {
+            placePlayerPiece(i+13, 4);
+            placeEnemyPiece(i+13, 4);
+        }
+
+        // Lava Beasts
+        for (int i = 0; i < 4; i++) {
+            placePlayerPiece(i+17, 5);
+            placeEnemyPiece(i+17, 5);
+        }
+
+        // Sorcerers
+        for (int i = 0; i < 4; i++) {
+            placePlayerPiece(i+21, 6);
+            placeEnemyPiece(i+21, 6);
+        }
+
+        // Beast Riders
+        for (int i = 0; i < 3; i++) {
+            placePlayerPiece(i+25, 7);
+            placeEnemyPiece(i+25, 7);
+        }
+
+        // Knights
+        for (int i = 0; i < 2; i++) {
+            placePlayerPiece(i+28, 8);
+            placeEnemyPiece(i+28, 8);
+        }
+
+        // Mages
+        placePlayerPiece(31, 9);
+        placeEnemyPiece(31, 9);
+
+        // Dragons
+        placePlayerPiece(32, 10);
+        placeEnemyPiece(32, 10);
+
+        // Bombs
+        for (int i = 0; i < 6; i++) {
+            placePlayerPiece(i+33, 11);
+            placeEnemyPiece(i+33, 11);
+        }
+        // Flags
+        placePlayerPiece(39, 0);
+        placeEnemyPiece(39, 0);
     }
     
     private void placePlayerPiece(int arrayLocation, int strength) {
@@ -89,10 +141,7 @@ public class GUI implements ActionListener{
         // Check to see if another piece exists at the current position
         for (int i = 0; i < playerPieceArray.length; i++) {
             if (playerPieceArray[i] != null) {
-                if (X == playerPieceArray[i].getX()) {
-                    canPlace = false;
-                }
-                if (Y == playerPieceArray[i].getY()) {
+                if (X == playerPieceArray[i].getX() && Y == playerPieceArray[i].getY()) {
                     canPlace = false;
                 }
             }
@@ -107,14 +156,11 @@ public class GUI implements ActionListener{
     private void placeEnemyPiece(int arrayLocation, int strength) {
         boolean canPlace = true;
         int X = randomInt(0, 10);
-        int Y = randomInt(6, 10);
+        int Y = randomInt(0, 4);
         // Check to see if another piece exists at the current position
         for (int i = 0; i < enemyPieceArray.length; i++) {
             if (enemyPieceArray[i] != null) {
-                if (X == enemyPieceArray[i].getX()) {
-                    canPlace = false;
-                }
-                if (Y == enemyPieceArray[i].getY()) {
+                if (X == enemyPieceArray[i].getX() && Y == enemyPieceArray[i].getY()) {
                     canPlace = false;
                 }
             }
