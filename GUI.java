@@ -16,11 +16,11 @@ public class GUI implements ActionListener{
 
     private ImageIcon titleImage = new ImageIcon("src/stratego.png");
 
-    private JLabel [][] boardLabels = new JLabel[10][10];
+    private JLabel[][] boardLabels = new JLabel[10][10];
 
-    private Hole [] holeArray = new Hole[8];
-    private playerPiece [] playerPieceArray = new playerPiece[40];
-    private enemyPiece [] enemyPieceArray = new enemyPiece[40];
+    private Hole[] holeArray = new Hole[8];
+    private playerPiece[] playerPieceArray = new playerPiece[40];
+    private enemyPiece[] enemyPieceArray = new enemyPiece[40];
 
     public GUI(){
         Font();
@@ -88,32 +88,32 @@ public class GUI implements ActionListener{
 
         // Archers
         for (int i = 0; i < 4; i++) {
-            placePlayerPiece(i+13, 4);
-            placeEnemyPiece(i+13, 4);
+            placePlayerPiece(i+14, 4);
+            placeEnemyPiece(i+14, 4);
         }
 
         // Lava Beasts
         for (int i = 0; i < 4; i++) {
-            placePlayerPiece(i+17, 5);
-            placeEnemyPiece(i+17, 5);
+            placePlayerPiece(i+18, 5);
+            placeEnemyPiece(i+18, 5);
         }
 
         // Sorcerers
         for (int i = 0; i < 4; i++) {
-            placePlayerPiece(i+21, 6);
-            placeEnemyPiece(i+21, 6);
+            placePlayerPiece(i+22, 6);
+            placeEnemyPiece(i+22, 6);
         }
 
         // Beast Riders
         for (int i = 0; i < 3; i++) {
-            placePlayerPiece(i+25, 7);
-            placeEnemyPiece(i+25, 7);
+            placePlayerPiece(i+26, 7);
+            placeEnemyPiece(i+26, 7);
         }
 
         // Knights
         for (int i = 0; i < 2; i++) {
-            placePlayerPiece(i+28, 8);
-            placeEnemyPiece(i+28, 8);
+            placePlayerPiece(i+29, 8);
+            placeEnemyPiece(i+29, 8);
         }
 
         // Mages
@@ -129,15 +129,26 @@ public class GUI implements ActionListener{
             placePlayerPiece(i+33, 11);
             placeEnemyPiece(i+33, 11);
         }
+
         // Flags
         placePlayerPiece(39, 0);
         placeEnemyPiece(39, 0);
+
+        System.out.println(playerPieceArray.length);
+
+        for (int i = 0; i < playerPieceArray.length; i++) {
+            boardLabels[playerPieceArray[i].getX()][playerPieceArray[i].getY()].setText(Integer.toString(playerPieceArray[i].getStrength()));
+        }
+
+        for (int i = 0; i < enemyPieceArray.length; i++) {
+            boardLabels[enemyPieceArray[i].getX()][enemyPieceArray[i].getY()].setText(Integer.toString(enemyPieceArray[i].getStrength()));
+        }
     }
     
     private void placePlayerPiece(int arrayLocation, int strength) {
         boolean canPlace = true;
-        int X = randomInt(0, 10);
-        int Y = randomInt(6, 10);
+        int X = randomInt(0, 9);
+        int Y = randomInt(6, 9);
         // Check to see if another piece exists at the current position
         for (int i = 0; i < playerPieceArray.length; i++) {
             if (playerPieceArray[i] != null) {
@@ -155,8 +166,8 @@ public class GUI implements ActionListener{
 
     private void placeEnemyPiece(int arrayLocation, int strength) {
         boolean canPlace = true;
-        int X = randomInt(0, 10);
-        int Y = randomInt(0, 4);
+        int X = randomInt(0, 9);
+        int Y = randomInt(0, 3);
         // Check to see if another piece exists at the current position
         for (int i = 0; i < enemyPieceArray.length; i++) {
             if (enemyPieceArray[i] != null) {
@@ -195,6 +206,4 @@ public class GUI implements ActionListener{
             gameScreen.updateUI();
         }
     }
-
-
 }
