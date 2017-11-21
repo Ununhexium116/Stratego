@@ -134,8 +134,6 @@ public class GUI implements ActionListener{
         placePlayerPiece(39, 0);
         placeEnemyPiece(39, 0);
 
-        System.out.println(playerPieceArray.length);
-
         for (int i = 0; i < playerPieceArray.length; i++) {
             boardLabels[playerPieceArray[i].getX()][playerPieceArray[i].getY()].setText(Integer.toString(playerPieceArray[i].getStrength()));
         }
