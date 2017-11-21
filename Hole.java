@@ -2,7 +2,7 @@ public class Hole extends Piece{
 
     boolean hole = true;
 
-    public Hole(int startX, int startY, int startStregnth) {
-        super(startX, startY, startStregnth);
+    public Hole(int startX, int startY, int startStrength, String startType) {
+        super(startX, startY, startStrength, startType);
     }
 }

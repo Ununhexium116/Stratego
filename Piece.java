@@ -1,13 +1,15 @@
 public class Piece {
     private int x = 0;
     private int y = 0;
-    int strength;
+    private int strength;
+    private String type;
 
     // Default Constructor
-    public Piece(int X, int Y, int strength) {
+    public Piece(int X, int Y, int strength, String type) {
         this.x = X;
         this.y = Y;
         this.strength = strength;
+        this.type = type;
     }
 
     // Setters
