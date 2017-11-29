@@ -3,7 +3,8 @@ import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
 
-public class GUI implements ActionListener{
+public class GUI implements ActionListener, MouseListener {
+    int count;
     private JFrame window = new JFrame("Noah's mom gay");
     private JFrame devWindow = new JFrame("Noah's dad gay");
 
@@ -27,6 +28,9 @@ public class GUI implements ActionListener{
     private Hole[] holeArray = new Hole[8];
     private playerPiece[] playerPieceArray = new playerPiece[40];
     private enemyPiece[] enemyPieceArray = new enemyPiece[40];
+
+    private boolean finalPlaces = false;
+    private boolean switchImminent = false;
 
     public GUI(){
         Font();
@@ -52,11 +56,12 @@ public class GUI implements ActionListener{
 
         gameScreen.setPreferredSize(new Dimension(1000,1000));
 
-        for(int i = 0; i<10; i++){
-            for(int j=0; j<10; j++){
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
                 boardLabels[j][i] = new JLabel();
                 boardLabels[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 boardLabels[j][i].setOpaque(true);
+                boardLabels[j][i].addMouseListener(this);
                 gameScreen.add(boardLabels[j][i]);
             }
         }
@@ -213,6 +218,26 @@ public class GUI implements ActionListener{
         }
     }
 
+    private void switchPieces(Piece piece, int i, int j, MouseEvent e) {
+        int x;
+        int y;
+        int x2;
+        int y2;
+        if(e.getSource() == boardLabels[i][j] && count == 0){
+            boardLabels[i][j].setBackground(Color.GREEN);
+            x = i;
+            y = j;
+            count = 1;
+        }
+        if(e.getSource() ==  boardLabels[i][j] && count == 1){
+            boardLabels[i][j].setBackground(Color.GREEN);
+            x2 = i;
+            y2 = j;
+            count = 0;
+        }
+
+    }
+
     public void Font(){
         title.setForeground(Color.RED);
         title.setFont(new Font("Helvetica", Font.PLAIN, 36));
@@ -235,5 +260,43 @@ public class GUI implements ActionListener{
             cl.show(contPanel, "game");
             gameScreen.updateUI();
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(!finalPlaces) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (e.getSource() == boardLabels[i][j] && !switchImminent) {
+                        boardLabels[i][j].setBackground(Color.lightGray);
+                        switchImminent = true;
+                    }
+                    if(e.getSource() == boardLabels[i][j] && switchImminent){
+
+                        switchImminent = false;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
