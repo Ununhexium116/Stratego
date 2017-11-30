@@ -32,6 +32,10 @@ public class GUI implements ActionListener, MouseListener {
     private boolean finalPlaces = false;
     private boolean switchImminent = false;
 
+    private int tempx = 0;
+    private int tempy = 0;
+    private int tempPlayerPieceArrayPosition = 0;
+
     public GUI(){
         Font();
         window.add(contPanel);
@@ -218,24 +222,33 @@ public class GUI implements ActionListener, MouseListener {
         }
     }
 
-    private void switchPieces(Piece piece, int i, int j, MouseEvent e) {
-        int x;
-        int y;
-        int x2;
-        int y2;
-        if(e.getSource() == boardLabels[i][j] && count == 0){
-            boardLabels[i][j].setBackground(Color.GREEN);
-            x = i;
-            y = j;
-            count = 1;
+    private int findPlayerPiece(int x, int y) {
+        for (int i = 0; i < playerPieceArray.length; i++) {
+            if (playerPieceArray[i].getX() == x && playerPieceArray[i].getY() == y) {
+                return i;
+            }
         }
-        if(e.getSource() ==  boardLabels[i][j] && count == 1){
-            boardLabels[i][j].setBackground(Color.GREEN);
-            x2 = i;
-            y2 = j;
-            count = 0;
+        return 0;
+    }
+
+    private void refreshBoard() {
+
+        for (int i = 0; i < playerPieceArray.length; i++) {
+            boardLabels[playerPieceArray[i].getX()][playerPieceArray[i].getY()].setText(Integer.toString(playerPieceArray[i].getStrength()));
+        }
+        for (int i = 0; i < playerPieceArray.length; i++) {
+            boardLabels[enemyPieceArray[i].getX()][enemyPieceArray[i].getY()].setText(Integer.toString(enemyPieceArray[i].getStrength()));
         }
 
+        for(int i = 0; i<10; i++){
+            for(int j = 0; j<10; j++){
+                switch (boardLabels[i][j].getText()){
+                    case "0": boardLabels[i][j].setText("Flag"); break;
+                    case "11": boardLabels[i][j].setText("Bomb"); break;
+                    case "1": boardLabels[i][j].setText("Spy"); break;
+                }
+            }
+        }
     }
 
     public void Font(){
@@ -267,14 +280,28 @@ public class GUI implements ActionListener, MouseListener {
         if(!finalPlaces) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (e.getSource() == boardLabels[i][j] && !switchImminent) {
-                        boardLabels[i][j].setBackground(Color.lightGray);
+                    if ((e.getSource() == boardLabels[i][j]) && !switchImminent) {
+                        boardLabels[i][j].setBackground(Color.LIGHT_GRAY);
                         switchImminent = true;
-                    }
-                    if(e.getSource() == boardLabels[i][j] && switchImminent){
+                        tempPlayerPieceArrayPosition = findPlayerPiece(i, j);
+                        System.out.println(tempPlayerPieceArrayPosition);
+                        tempx = i;
+                        tempy = j;
+                        //System.out.println("switchImminent = true");
+                    } else if ((e.getSource() == boardLabels[i][j]) && switchImminent){
+                        playerPieceArray[tempPlayerPieceArrayPosition].setX(playerPieceArray[findPlayerPiece(i, j)].getX());
+                        playerPieceArray[tempPlayerPieceArrayPosition].setY(playerPieceArray[findPlayerPiece(i, j)].getY());
+
+                        playerPieceArray[findPlayerPiece(i, j)].setX(tempx);
+                        playerPieceArray[findPlayerPiece(i, j)].setY(tempy);
+
+                        boardLabels[tempx][tempy].setBackground(Color.BLUE);
 
                         switchImminent = false;
+
+                        //System.out.println("switchImminent = false");
                     }
+                    refreshBoard();
                 }
             }
         }
